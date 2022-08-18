@@ -1,10 +1,11 @@
 # full-stack-project-marketplace-python
 In this website you can search for restaurant and fast food place, you can search by name of the restaurant or by location, you can also sort by high rate / low rate.
-you should register to the website as user or owner(restaurant) and login, the user can add like to the restaurant and add comment.
+you should register to the website as user or owner(restaurant) and login, the user can add like to the restaurant and add comment / delete comment.
 the user can compare 2 restaurant.
-the owner can add item / edit item / delete item / add pictures to the gallery / change profile picture and the user can see who did "like" to the restaurant.
+the owner can add item / edit item / delete item / add pictures to the gallery/ delete picture/ change profile picture and the user can see who did "like" to the restaurant.
 There are a items that have a sale when hovering on the sale, will open a description for the sale
-if the sale box in color green that mean the sale for every one, if the box in color black it's mean there are a description(condition) for this sale
+if the sale box in color green that mean the sale for every one, if the box in color black it's mean there are a description(condition) for this sale.
+
 The Main page
 ![image](https://user-images.githubusercontent.com/77536857/185373499-08937c11-a942-4050-b47f-1144d4598c0f.png)
 Register as a business
@@ -20,6 +21,8 @@ Sort by high rating
 ![image](https://user-images.githubusercontent.com/77536857/185374476-f02ac73b-46f3-44c6-9fa3-349374285fd4.png)
 Sort by low rating
 ![image](https://user-images.githubusercontent.com/77536857/185374580-47ad4e96-e8f8-40e0-8208-be2a792c437f.png)
+Searching by location 
+![image](https://user-images.githubusercontent.com/77536857/185378080-95d8db59-6af4-40a9-8043-27ef0749502f.png)
 login by Shawatina
 ![image](https://user-images.githubusercontent.com/77536857/185375051-26f9f897-fe9b-4c11-ae22-78f1b8bb2227.png)
 comparing 2 restaurant 
@@ -36,3 +39,15 @@ There are a items that have a sale when hovering on the sale, will open a descri
 ![image](https://user-images.githubusercontent.com/77536857/185376171-a8a9f5e6-e42a-4f89-9e1a-d758f50073f6.png)
 The owner can delete picture from the gallery by clicking the trash icon, he can change the profile picture on clicking on the other icon and on clicking on the pin icon he can change personal details.
 ![image](https://user-images.githubusercontent.com/77536857/185376722-a2d10c9d-7e39-4ad5-8bae-544152be2761.png)
+Add item for the restaurant 
+![image](https://user-images.githubusercontent.com/77536857/185377679-b16d1c5c-59eb-4278-9c17-eea065f39c3c.png)
+Add picture for the restaurant 
+![image](https://user-images.githubusercontent.com/77536857/185377782-397f8d2d-5173-4ce2-9a0e-c08699e8491f.png)
+Edit an specific item 
+![image](https://user-images.githubusercontent.com/77536857/185377875-fd90cff9-7956-4bbd-8237-6d252b43b3fe.png)
+Can't edit an empty form 
+![image](https://user-images.githubusercontent.com/77536857/185378272-a56e7bf8-3267-4fe6-89ba-8af304d159d5.png)
+On hovering on like icon can see who did like for the specific restaurant
+![image](https://user-images.githubusercontent.com/77536857/185378476-c3e54261-45b0-4a24-b7d9-1a275118a718.png)
+
+
