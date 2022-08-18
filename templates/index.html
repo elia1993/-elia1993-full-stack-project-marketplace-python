@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+{% extends var %}
+<head>
+    {% block title %}
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+
+            integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2"
+            crossorigin="anonymous"
+    />
+    <script
+            src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+            integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+            crossorigin="anonymous"
+    ></script>
+    <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
+            crossorigin="anonymous"
+    ></script>
+    <link
+            href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css"
+            rel="stylesheet"
+    />
+         <link
+        rel="stylesheet"
+        type="text/css"
+        href="buttonLove.css"
+    />
+           <link
+        rel="stylesheet"
+        type="text/css"
+        href="customer_search.css"
+    />
+    {% endblock %}
+</head>
+
+<body style="background-color: #d9cac1;">
+{% block body %}
+<section class="pt-5 pb-5 mt-0 align-items-center d-flex bg-dark"
+         style="height:38vh;background-size: cover;background-repeat: no-repeat; background-image: url(https://www.webfx.com/wp-content/uploads/2021/11/food-beverage-header.png);">
+    <div class="container-fluid">
+        <div class="row justify-content-center align-items-center d-flex text-center h-100">
+           <div  style=" text-align:center;" class="container">
+	<div class="row">
+        <div  class="col-md-6">
+            <div   id="custom-search-input">
+                <div  class="input-group col-md-12">
+                    <form method="POST" action="/search">
+<div class="centerbox">
+              <p class="description">
+              <div class="main-form-container">
+        		<h2 style="color:#3cb13c;text-align:left;font-size:35px;">Find your perfect restaurant</h2>
+                <form id="" class="" method="post">
+                  <input type="text" class="main-input main-name" name="search"  placeholder="search for resturant \ fast food" />
+                 <select  style="background-size: 15px 15px;background-image:url(https://d29fhpw069ctt2.cloudfront.net/icon/image/39091/preview.png);"  id="opt1"  name="selected_search"  class="main-btn main-input ">
+                   <option  value="name"  class="search-large ">Name</option>
+                   <option  value ="location" class="search-large ">Location</option>
+                </select>
+      <input id="main-submit" class="" type="submit" value="Search" />
+    </form>
+  </div>
+</div>
+<button type="button" id="main-submit-mobile">Search</button>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+	</div>
+</div>
+
+        </div>
+    </div>
+</section>
+
+
+<hr>
+<div class="container">
+    <div class="row">
+        <div class="dropdown  btn-group-success ">
+            <button class="btn btn-success  dropdown-toggle " type="button" id="dropdownMenuButton"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Sort By
+            </button>
+            <div style="background-color:#228b22;" class="btn-success dropdown-menu " aria-labelledby="dropdownMenuButton">
+                <a href="/category?cat=high-rating" class="dropdown-item"> High rating </a>
+                <a href="/category?cat=low-rating" class="dropdown-item"> Low rating </a>
+                {% for cat in categories %}
+                <a href="/category?cat={{ cat }}" class="dropdown-item"> {{ cat }} </a>
+                {% endfor %}
+
+            </div>
+            <a style="color:white;" class="btn btn-success" role="button" id="compareBtn" onclick="compareOwners()">Compare</a>
+        </div>
+    </div>
+</div>
+<hr>
+<div class="container">
+    <div class="row" id="businesses_row">
+        {% for owner in owners %}
+        <div class="col-md-4" style="margin-bottom: 2%;">
+            <div class="card">
+                <img class="card-img-top" src={{owner.img_url}} style="height: 50vh;">
+                <div class="card-block">
+                    <h4 class="card-title text-center">{{owner.name}} </h4>
+                    <div class="meta">
+                        <div class="row">
+                            <div class="col-md-9">
+                                <a>{{owner.categories}}</a>
+                            </div>
+                            <div class="col-md-1">
+                                <div style="font-size: 20px;" class="text-right">
+                                    <a  style="margin-left: 10px;"  href="mailto:{{owner.email}}" title="Email"><i
+                                            class="fa fa-envelope-square fa-10x"></i></a>
+                                    <a    onmouseout="hide('{{owner.email}}')" onmouseover="show('{{owner.email}}')" class="btnLove"  href="/like?owner={{ owner.email }}">
+                                        <span    class="glyphicon btn-glyphicon glyphicon-thumbs-up img-circle text-primary"></span>
+                                        {% if owner.counter > 0 %}
+                                        {{owner.counter}}
+                                    <dave class="customer_likes" id="{{owner.email}}" style="display:none;">
+                                    {% for cust in cutomers_likes %}
+                                                {% for c in cust %}
+                                        {% if owner.email == c['business_email'] %}
+                                        {{c['name']}}
+                                                                                {% endif %}
+                {% endfor %}
+
+                                                        {% endfor %}
+                                        </dave>
+
+                                        {% endif %}
+                                            <script>
+                                            function show(x){
+                                                document.getElementById(x).style.display = 'block';
+                                            }
+                                            function hide(x){
+                                                document.getElementById(x).style.display = 'none';
+                                            }
+                                        </script>
+                                    </a>
+
+                                </div>
+                            </div>
+                            <div class="col-md-1">
+                                <div style="font-size: 20px;" class="text-right">
+                                    <input onclick='clickOwner("{{owner.email}}")' id="{{owner.email}}" type="checkbox" name="compare" style="width:15px; height:15px;">
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+                <div class="card-footer">
+                    <a class="btn btn-success btn-md float-right" role="button" href="/about?em={{owner.email}}">Visit
+                        page</a>
+                    <span><i class=""></i>{{owner.info}}</span>
+                </div>
+
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+<script>
+    var cnt = 0;
+    var cmp1 = null;
+    var cmp2 = null;
+    function isOn(value){
+        if(cmp1 === value)
+            return 1;
+        if(cmp2 === value)
+            return 2;
+        return 0;
+    }
+    function clickOwner(owner){
+        var res = isOn(owner);
+        if(res == 0 && cnt >= 2){ //trying to check a third owner
+            alert("can't mark more than 2! ");
+            document.getElementById(owner).checked = false;
+        }
+        else{
+            if(res == 1)
+            {
+                cmp1 = null;
+                cnt--;
+            }
+                
+            else if(res == 2)
+            {
+                cmp2 =null;
+                cnt--;
+            }
+               
+            else if(cmp1 == null)
+            {
+                cmp1 = owner;
+                cnt++;
+            }
+            else 
+            {
+                cmp2 = owner;
+                cnt++;
+            }
+        }
+    }
+    function compareOwners(){
+        if(cmp1 == null || cmp2 == null){ //trying to check a third owner
+            alert("can't compare only 1 business!");
+         return;
+        }
+        var loc = "/compare?left=" + cmp1 + "&right=" + cmp2;
+        window.location.href = loc
+    }
+</script>
+
+{% endblock %}
+</body>
+
+</html>

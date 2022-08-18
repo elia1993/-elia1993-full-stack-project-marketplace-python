@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+{% extends 'masterpage.html' %}
+<head>
+    <meta charset="UTF-8">
+    {% block title %}
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="main_register.css">
+    {% endblock %}
+
+
+</head>
+<body>
+{% block body %}
+<div class="container register">
+    <div class="row">
+        <div class="col-md-12">
+            <ul class="nav nav-tabs nav-justified" id="myTab" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" id="business-tab" data-toggle="tab" href="#business" role="tab"
+                       aria-controls="business" aria-selected="true">Register as a business</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="user-tab" data-toggle="tab" href="#user" role="tab" aria-controls="user"
+                       aria-selected="false">Register as a client</a>
+                </li>
+            </ul>
+            <div class="tab-content" id="myTabContent">
+                <div class="tab-pane fade show active text-align form-new" id="business" role="tabpanel"
+                     aria-labelledby="business-tab">
+                    <h3 class="register-heading">Register as a business</h3>
+                    <div class="row register-form">
+                        <div class="col-md-12">
+                            <form method="GET" action="/register/owner">
+                                <div class="form-row">
+                                    <div class="form-group col-md-12">
+                                        <input
+                                                type="text"
+                                                name="fullName"
+                                                placeholder="Business Name"
+                                                class="form-control"
+                                        />
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <input
+                                                type="email"
+                                                name="email"
+                                                class="form-control"
+                                                id="inputEmail4"
+                                                placeholder="Email"
+                                        />
+                                    </div>
+                                     <div class="form-group col-md-6">
+                                            <input
+                                                type="password"
+                                                name="password"
+                                                placeholder="Password"
+                                                class="form-control"
+                                                required
+                                                id="id_password"
+                                                pattern=".{8,}" title="Eight or more characters"
+                                        />
+                                       <i class="fa-solid fa-eye fa-eye-slash" id="togglePassword" style="cursor: pointer;"></i>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <input
+                                                type="text"
+                                                name="city"
+                                                placeholder="City"
+                                                class="form-control"
+                                        />
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <input
+                                                type="number"
+                                                name="zip_code"
+                                                class="form-control"
+                                                placeholder="Zip Code"
+                                        />
+                                    </div>
+                                </div>
+
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <input
+                                                id="Mobile No."
+                                                name="mobileNo"
+                                                placeholder="Phone"
+                                                class="form-control"
+                                                required="required"
+                                                type="text"
+                                        />
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <select
+                                                id="inputState"
+                                                class="form-control"
+                                                name="busninessType"
+                                        >
+                                            <option>Restaurant</option>
+                                            <option>Fast-Food</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-md-12">
+                  <textarea
+                          id="comment"
+                          name="comment"
+                          placeholder="Description"
+                          cols="40"
+                          rows="5"
+                          class="form-control"
+                  ></textarea>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-12">
+                                        <input
+                                                type="text"
+                                                name="itemUrl"
+                                                placeholder="Image Url"
+                                                class="form-control"
+                                        />
+                                    </div>
+                                </div>
+
+                                <div class="form-row">
+                <span class="glyphicon glyphicon-plus" aria-hidden="false">
+                  <a class="btn btn-success btn-md" role="button" data-toggle="modal" data-target="#form">
+                    <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="16"
+                            height="16"
+                            fill="currentColor"
+                            class="bi bi-plus"
+                            viewBox="0 0 16 16">
+                      <path
+                              fill-rule="evenodd"
+                              d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"
+                      />
+                    </svg>
+                  </a>
+                </span>
+                                </div>
+                                <hr/>
+
+                                <div class="form-row">
+                                    <input type="submit" class="btn btn-danger" value="Submit"/>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade show text-align form-new" id="user" role="tabpanel"
+                     aria-labelledby="user-tab">
+                    <h3 class="register-heading">Register as a client</h3>
+                    <div class="row register-form">
+                        <div class="col-md-12">
+                            <form method="GET" action="/register/user">
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <input
+                                                type="text"
+                                                name="fullName"
+                                                placeholder="Name"
+                                                class="form-control"
+                                        />
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <input
+                                                id="userMobile No."
+                                                name="usermobileNo"
+                                                placeholder="Phone"
+                                                class="form-control"
+                                                required="required"
+                                                type="text"
+                                        />
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <input
+                                                type="email"
+                                                name="email"
+                                                class="form-control"
+                                                id="userinputEmail"
+                                                placeholder="Email"
+                                        />
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <input
+                                                type="password"
+                                                name="password"
+                                                placeholder="Password"
+                                                class="form-control"
+                                                required
+                                                id="id_password1"
+                                                pattern=".{8,}" title="Eight or more characters"
+                                        />
+                                        <i class="fa-solid fa-eye fa-eye-slash" id="togglePassword1" style="cursor: pointer;"></i>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <input
+                                                type="text"
+                                                name="city"
+                                                placeholder="City"
+                                                class="form-control"
+                                        />
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <input
+                                                type="number"
+                                                name="userzip_code"
+                                                class="form-control"
+                                                placeholder="Zip Code"
+                                        />
+                                    </div>
+                                </div>
+
+
+                                <div class="form-row">
+                                    <div class="form-group col-md-12">
+                                        <input
+                                                type="text"
+                                                name="itemUrl"
+                                                placeholder="Image Url"
+                                                class="form-control"
+                                        />
+                                    </div>
+                                </div>
+                                <hr/>
+
+                                <div class="form-row">
+                                    <input type="submit" class="btn btn-danger" value="Submit"/>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div
+        class="modal fade"
+        id="form"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="exampleModalLabel"
+        aria-hidden="true"
+>
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header border-bottom-0">
+                <h5 class="modal-title" id="exampleModalLabel">Add Item</h5>
+                <button
+                        type="button"
+                        class="close"
+                        data-dismiss="modal"
+                        aria-label="Close"
+                >
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form method="GET" action="/add_item">
+                <div class="form-group col-md-12">
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <input
+                                    type="text"
+                                    name="itemName"
+                                    placeholder="Item Name"
+                                    class="form-control"
+                                    type="text"
+                            />
+                        </div>
+                        <div class="form-group col-md-6" name="email">
+                            <input
+                                    type="text"
+                                    name="Price"
+                                    class="form-control"
+                                    id="inputEmail4"
+                                    placeholder="Item Price"
+                            />
+                        </div>
+                        <div class="form-group col-md-12">
+                            <input
+                                    type="text"
+                                    name="itemUrl"
+                                    placeholder="Image Url"
+                                    class="form-control"
+                                    type="text"
+                            />
+                        </div>
+                    </div>
+                    <textarea
+                            id="comment"
+                            name="comment"
+                            placeholder="Description"
+                            cols="40"
+                            rows="5"
+                            class="form-control"
+                    ></textarea>
+                    <br/>
+                    <div class="text-center">
+                        <input type="submit" class="btn btn-success" value="Add" onclick="return confirm('Are you sure you want to add ?');"/>
+                        <input
+                                type="submit"
+                                class="btn btn-danger"
+                                data-dismiss="modal"
+                                value="Close"
+                        />
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script>
+const togglePassword = document.querySelector('#togglePassword');
+  const password = document.querySelector('#id_password');
+const togglePassword1 = document.querySelector('#togglePassword1');
+  const password1 = document.querySelector('#id_password1');
+  togglePassword.addEventListener('click', function (e) {
+    const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+    password.setAttribute('type', type);
+    this.classList.toggle('fa-eye-slash');
+});
+ togglePassword1.addEventListener('click', function (e) {
+    const type = password1.getAttribute('type') === 'password' ? 'text' : 'password';
+    password1.setAttribute('type', type);
+    this.classList.toggle('fa-eye-slash');
+});
+  </script>
+{% endblock %}
+
+</body>
+</html>

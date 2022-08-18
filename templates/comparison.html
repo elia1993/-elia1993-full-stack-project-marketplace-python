@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+{% extends var%}
+<head>
+    {% block title %}
+
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+
+    {% endblock %}
+</head>
+
+<body>
+{% block body %}
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6 col-md-6">
+        <h3>{{left_owner.name}}</h3>
+        {% for item in left_items %}
+            <div class="well">
+                <h2 class="text-info"></h2>
+                <p><span class="label label-success">{{item.name}}</span></p>
+                <img class="card-img-top" src={{item.img_url}} style="height: 40vh;">
+                <p>{{item.info}}</p>
+                <hr>
+                <h3>{{item.price}}₪</h3>
+                <hr>
+            </div>
+            {% endfor %}
+            <p><a class="btn btn-success btn-lg" href="/about?em={{left_owner.email}}"><i class="icon-ok"></i> About</a></p>
+        </div>
+        
+        
+        <div class="col-sm-6 col-md-6">
+            <h3>{{right_owner.name}}</h3>
+            {% for item in right_items %}
+            <div class="well">
+                <h2 class="text-info"></h2>
+                <p><span class="label label-success">{{item.name}}</span></p>
+                <img class="card-img-top" src={{item.img_url}} style="height: 40vh;">    
+                <p>{{item.info}}</p>
+                <hr>
+                <h3>{{item.price}}₪</h3>
+                <hr>
+            </div>
+            {% endfor %}
+            <p><a class="btn btn-success btn-lg" href="/about?em={{right_owner.email}}"><i class="icon-ok"></i> About</a></p>
+        </div>
+        
+    </div>
+</div>
+{% endblock %}
+</body>
+
+</html>

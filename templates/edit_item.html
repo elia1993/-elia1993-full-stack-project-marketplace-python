@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+{% extends "masterpage_loggedin.html" %}
+
+<head>
+    {% block title %}
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    {% endblock %}
+</head>
+<body>
+{% block body %}
+<div class="container">
+  <div class="row">
+     <div id="legend">
+        <legend class="">Edit Item</legend>
+     </div>
+  </div>
+    <div class="row">
+     <div class="col-md-3">
+        <div class="control-group">
+              <div class="controls">
+                <img class="img-thumbnail avatar"  src="{{item.img_url}}" height="250" width="250"/>
+              </div>
+        </div>
+    </div>
+
+     <div class="col-md-6">
+
+          <form class="form-horizontal" action="/edit/{{item.name}}" method="POST">
+          <fieldset>
+
+            <div class="control-group">
+              <label class="control-label" for="name">Name</label>
+              <div class="controls">
+                <input type="text" id="name" name="name" placeholder="{{item.name}}" class="form-control input-lg">
+                  <br>
+              </div>
+            </div>
+
+            <div class="control-group">
+              <label class="control-label" for="price">Price</label>
+              <div class="controls">
+                <input type="text" id="price" name="price" placeholder="{{item.price}}" class="form-control input-lg">
+                  <br>
+              </div>
+            </div>
+
+            <div class="control-group">
+              <label class="control-label" for="img_url">Image URL</label>
+              <div class="controls">
+                <input type="text" id="img_url" name="img_url" placeholder="{{item.img_url}}" class="form-control input-lg">
+                  <br>
+              </div>
+            </div>
+
+            <div class="control-group">
+              <label class="control-label" for="info">Info</label>
+              <div class="controls">
+                <input type="text" id="info" name="info" placeholder="{{item.info}}" class="form-control input-lg">
+                  <br>
+              </div>
+            </div>
+                 <div class="control-group">
+              <label class="control-label" for="sale">Sale</label>
+              <div class="controls">
+                <input type="text" id="sale" name="sale" placeholder="{{item.sale}}" class="form-control input-lg">
+                  <br>
+              </div>
+            </div>
+                    <div class="control-group">
+              <label class="control-label" for="sale_description">Sale description <small>(to remove description write none)</small></label>
+              <div class="controls">
+                <input type="text" id="sale_description" name="sale_description" placeholder="{{item.sale_description}}" class="form-control input-lg">
+                  <br>
+              </div>
+            </div>
+
+            <div class="control-group">
+              <!-- Button -->
+              <div class="controls">
+                <button id="save" onclick="return confirm('Are you sure to save changes?')"  class="btn btn-success">Save changes</button>
+              </div>
+            </div>
+          </fieldset>
+        </form>
+
+    </div>
+  </div>
+</div>
+{% endblock %}
+</body>
+</html>
+

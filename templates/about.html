@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link
+        href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+        rel="stylesheet"
+        id="bootstrap-css"
+    >
+    <script
+        src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"
+    ></script>
+    <script
+        src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"
+    ></script>
+    <link
+        rel="stylesheet"
+        type="text/css"
+        href="about.css"
+    />
+</head>
+
+<body>
+    <div class="col-md-2 text-left" style="margin-top: 2%;">
+        <a class=" btn btn-success" role="button" href="/">Main page</a>
+    </div>
+    <div class="container emp-profile">
+        <form method="post">
+            <div class="row">
+                <div class="col-md-4">
+                    <img class="card-img-top" src={{owner.img_url}} style="height: 45vh">
+                </div>
+                <div class="col-md-6">
+                    <div class="profile-head">
+                        <h5>
+                            {{owner.name}}
+                        </h5>
+                        <h6>
+                            {{owner.categories}}
+                        </h6>
+                        <ul class="nav nav-tabs" id="myTab" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" id="home-tab" data-toggle="tab" role="tab" aria-controls="home" aria-selected="true">About</a>
+                            </li>
+                        </ul>
+                        <div class="col-md-8">
+                            <div class="tab-content profile-tab" id="myTabContent">
+                                <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label>Email</label>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <p>{{owner.email}}</p>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label>Phone</label>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <p>{{owner.phone}}</p>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label>City</label>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <p>{{owner.city}}</p>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label>ZIP Code</label>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <p>{{owner.zip_code}}</p>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-10">
+                                            <label>{{owner.info}}</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="profile-work">
+                    </div>
+                </div>
+                
+            </div>
+        </form>
+        
+    </div>
+    <div class="container">
+        <div class="row" id="businesses_row">
+            {% for item in owner_items %}
+            <div class="col-md-4" style="margin-bottom: 2%;">
+                <div class="card">
+                <img class="card-img-top" src={{item.img_url}} style="height: 40vh;">
+                <div class="card-block">
+                    <h4 class="card-title text-center">{{item.name}}</h4>
+                    <div class="meta" style="margin-left: 5%;">
+                    <a>{{owner.categories}}</a>
+
+                    <div style="font-size: 20px;" class="text-right">
+                        <a href="#" title="Facebook"><i class="fa fa-phone-square fa-10x"></i></a>
+                        <a href="mailto:{{owner.email}}" title="Email"><i class="fa fa-envelope-square fa-10x"></i></a>
+                    </div>
+
+                    </div>
+
+                </div>
+
+                <div class="card-footer">
+                    <span><i class=""></i>{{item.info}}</span>
+                    <span><i class=""></i>|</span>
+                    <span><i class=""></i>{{item.price}}₪</span>
+                </div>
+                
+                </div>
+            </div>
+            {% endfor %}
+
+        </div>
+        </tbody>
+        </div>
+
+</body>
+
+</html>

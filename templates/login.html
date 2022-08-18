@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+{% extends 'masterpage.html' %}
+<head>
+    {% block title %}
+    <meta charset="UTF-8">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <link rel="stylesheet" href="login.css">
+    {% endblock %}
+</head>
+<body>
+    {% block body %}
+ {% with messages = get_flashed_messages() %}
+         {% if messages %}
+               {% for message in messages %}
+                    <h4  id="box"  style="border-radius:2px;background:rgba(255, 0, 0, 0.4); position: absolute; color:white;">{{ message }}</h4>
+               <script>
+                    setTimeout(() => {
+                              const box = document.getElementById('box');
+                              box.style.display = 'none';
+                    }, 3000);
+               </script>
+               {% endfor %}
+         {% endif %}
+      {% endwith %}
+<section class="login-block">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 login-sec">
+                <h2 class="text-center">Login Now</h2>
+                <form method="POST" class="login-form" action="/login">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1" class="text-uppercase">Email</label>
+                        <input type="text" class="form-control" placeholder="" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1" class="text-uppercase">Password</label>
+                        <p><input type="password" class="form-control" placeholder="" name="password" id="id_password" required>
+                       <i class="fa-solid fa-eye fa-eye-slash" id="togglePassword" style="cursor: pointer;"></i></p>
+                    </div>
+
+
+                    <div class="form-check">
+                        <label class="form-check-label">
+                            <input type="checkbox" class="form-check-input">
+                            <small>Remember Me</small>
+                        </label>
+                        <button type="submit" class="btn btn-login float-right">Submit</button>
+                    </div>
+
+                </form>
+                <div class="copy-text">Don't have an account? <a href="register">Register</a></div>
+            </div>
+            <div class="col-md-8 banner-sec">
+                <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                    <ol class="carousel-indicators">
+                        <li data-target="#carouselExampleIndicators" data-slide-to="0" ></li>
+                        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                        <li data-target="#carouselExampleIndicators" data-slide-to="2"  class="active"></li>
+                    </ol>
+                    <div class="carousel-inner" role="listbox">
+                        <div class="carousel-item ">
+                            <img class="d-block img-fluid" src="https://www.goldenrestaurantmarketing.com/wp-content/uploads/2019/09/instagram-marketing-tips-for-restaurant-min.jpg"
+                                 alt="First slide">
+                            <div class="carousel-caption d-none d-md-block">
+                                <div class="banner-text">
+                                    <h2 style="color:black;">Grow your Restaurant</h2>
+                                    <h6 style="color:white; text-shadow: 2px 2px black;">In our blog you can market and advertise your place</h6>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <img class="d-block img-fluid"
+                                 src="https://www.dotmug.net/wp-content/uploads/2017/10/fotocover.jpg"
+                                 alt="First slide">
+                            <div class="carousel-caption d-none d-md-block">
+                                <div class="banner-text">
+                                    <h2>Our blog is your guide of good food.</h2>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item active">
+                            <img class="d-block img-fluid"
+                                 src="https://2pch54dpeer3r4mvj3o9t7dn-wpengine.netdna-ssl.com/wp-content/uploads/2021/02/restaurant-instagram-marketing-inset-2.jpg"
+                                 alt="First slide">
+                            <div class="carousel-caption d-none d-md-block">
+                                <div class="banner-text">
+                                    <h2 style="color:black;">Find Restaurant</h2>
+                                    <p style="color:white; text-shadow: 2px 2px black;">If you’re looking for a tasty meal, our blog helps you find the best restaurants, cafes, and bars around you.</p>
+                                    <h6 style="color:white; text-shadow: 2px 2px black;">Discover customers reviews and ratings of restaurant's, and all necessary information in one place.</h6>
+                                    <h6 style="color:white; text-shadow: 2px 2px black;">You can compare places to choice the best restaurant for your tour</h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div></div>
+</section>
+<script>
+const togglePassword = document.querySelector('#togglePassword');
+  const password = document.querySelector('#id_password');
+  togglePassword.addEventListener('click', function (e) {
+    const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+    password.setAttribute('type', type);
+    this.classList.toggle('fa-eye-slash');
+});
+  </script>
+{% endblock %}
+</body>
+</html>

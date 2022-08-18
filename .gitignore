@@ -1,0 +1,10 @@
+.idea/
+tempCodeRunnerFile.py
+__pycache__
+.vscode/
+images/
+objects/__pycache__
+database/__pycache__
+static/*.jpg
+config.py
+WhatsApp Image 2020-12-16 at 10.24.27.jpeg

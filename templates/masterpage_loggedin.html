@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <meta charset="UTF-8">
+    {% block title %}
+		Marketplace
+	{% endblock %}
+</head>
+<body>
+<nav  class="navbar navbar-icon-top navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="/">Business Market</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="/">
+          <i class="fa fa-home"></i>
+          Home
+          <span class="sr-only">(current)</span>
+          </a>
+      </li>
+           <li class="nav-item active">
+        <a class="nav-link" href="website_owner">
+          <i class="fa fa-address-card"></i>
+          WebSite Owner
+          <span class="sr-only">(current)</span>
+          </a>
+      </li>
+    </ul>
+    <ul class="navbar-nav ">
+      <li class="nav-item">
+        <a style="color:white;" class="nav-link" href="/about?em={{session['user_email']}}">
+          Profile
+        </a>
+      </li>
+      <li class="nav-item">
+        <a style="color:white;" class="nav-link" href="/logout">
+          Logout
+        </a>
+      </li>
+
+    </ul>
+        {% if session["user_email"] == user.email %}
+            <h2 style="color:white; font-size:15px;"> Hi {{user.name}}!</h2>
+      {% endif %}
+  </div>
+</nav>
+
+	{% block body %}
+
+	{% endblock %}
+
+</body>
+<footer>
+      <nav class="navbar navbar-icon-top navbar-expand-lg navbar-dark bg-dark">
+		<p class="navbar-brand" style="padding-left: 45%;">Marketplace &copy; 2021</p>
+      </nav>
+	</footer>
+</html>

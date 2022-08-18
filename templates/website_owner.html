@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <head>
+    {% block title %}
+    <meta charset="UTF-8">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <link rel="stylesheet" href="about.css">
+       <style>
+.fa {
+  padding: 2px;
+  font-size: 25px;
+  width: 30px;
+  text-align: center;
+  text-decoration: none;
+  margin: 5px 2px;
+  border-radius: 50%;
+}
+.fa:hover {
+    opacity: 0.7;
+      text-decoration: none;
+}
+
+.fa-facebook {
+  background: #3B5998;
+  color: white;
+}
+
+.fa-instagram {
+  background: #125688;
+  color: white;
+}
+.fa-linkedin {
+  background: #007bb5;
+  color: white;
+}
+.fa-github {
+  background: #00aff0;
+  color: white;
+}
+</style>
+    {% endblock %}
+</head>
+<body>
+    <div class="col-md-2 text-left" style="margin-top: 2%;">
+        <a class=" btn btn-success" role="button" href="/">Main page</a>
+    </div>
+    <div class="container emp-profile">
+        <form method="post">
+            <div class="row">
+                <div class="col-md-4">
+                    <img class="card-img-top" src= "{{ url_for('static',filename='elia_pic.jpg') }}" style="height: 45vh"/>
+                </div>
+                <div class="col-md-6">
+                    <div class="profile-head">
+                        <h5>
+                        </h5>
+                        <h6>
+                        </h6>
+                        <ul class="nav nav-tabs" id="myTab" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" id="home-tab" data-toggle="tab" role="tab" aria-controls="home" aria-selected="true">About</a>
+                            </li>
+                        </ul>
+                        <div class="col-md-8">
+                            <div class="tab-content profile-tab" id="myTabContent">
+                                <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label>Email</label>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <p>elia.mjdlany93@gmail.com</p>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label>Phone</label>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <p>0542545616</p>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label>City</label>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <p>nof hagalil</p>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label>ZIP Code</label>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <p>1787024</p>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-10">
+                                        <a href="https://www.facebook.com/elia.majdalany/" class="fa fa-facebook" target="_blank"></a>
+                                        <a href="https://www.linkedin.com/in/elia-mjdlany-97413bb3/" class="fa fa-linkedin" target="_blank"></a>
+                                        <a href="https://www.instagram.com/elia.fitt/" class="fa fa-instagram" target="_blank"></a>
+                                        <a href="https://github.com/elia1993" class="fa fa-github" target="_blank"></a>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="profile-work">
+                    </div>
+                </div>
+
+            </div>
+        </form>
+
+    </div>
+</body>
+</html>

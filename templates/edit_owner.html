@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+{% extends "masterpage_loggedin.html" %}
+
+<head>
+    {% block title %}
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    {% endblock %}
+</head>
+<body>
+{% block body %}
+<div class="container">
+  <div class="row">
+     <div id="legend">
+        <legend class="">Edit Profile</legend>
+     </div>
+  </div>
+      <div class="row">
+     <div class="col-md-3">
+        <div class="control-group">
+              <div class="controls">
+                <img class="img-thumbnail avatar"  src="{{owner.img_url}}" height="250" width="250"/>
+              </div>
+        </div>
+    </div>
+               <div class="col-md-6">
+
+          <form class="form-horizontal" action="/edit_owner" method="POST">
+          <fieldset>
+
+            <div class="control-group">
+              <label class="control-label" for="name">Name</label>
+              <div class="controls">
+                <input type="text" id="name" name="name" placeholder="{{owner.name}}" class="form-control input-lg">
+                  <br>
+              </div>
+            </div>
+ <div class="control-group">
+              <label class="control-label" for="img_url">Image URL</label>
+              <div class="controls">
+                <input type="text" id="img_url" name="img_url" placeholder="{{owner.img_url}}" class="form-control input-lg">
+                  <br>
+              </div>
+            </div>
+
+            <div class="control-group">
+              <label class="control-label" for="phone">Phone</label>
+              <div class="controls">
+                <input type="text" id="phone" name="phone" placeholder="{{owner.phone}}" class="form-control input-lg">
+                  <br>
+              </div>
+            </div>
+
+            <div class="control-group">
+              <label class="control-label" for="city">City</label>
+              <div class="controls">
+                <input type="text" id="city" name="city" placeholder="{{owner.city}}" class="form-control input-lg">
+                  <br>
+              </div>
+            </div>
+                 <div class="control-group">
+              <label class="control-label" for="zip_code">Zip code</label>
+              <div class="controls">
+                <input type="text" id="zip_code" name="zip_code" placeholder="{{owner.zip_code}}" class="form-control input-lg">
+                  <br>
+              </div>
+                         <div class="row">
+
+            </div>
+            <div class="control-group">
+              <!-- Button -->
+              <div class="controls">
+                <button id="save" onclick="return confirm('Are you sure to save changes?')"  class="btn btn-success">Save changes</button>
+              </div>
+            </div>
+                                    </div>
+
+          </fieldset>
+        </form>
+    </div>
+  </div>
+</div>
+{% endblock %}
+</body>
+</html>
+

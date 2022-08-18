@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html>
+{% extends var%}
+<head>
+    {% block title %}
+    <link
+        href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+        rel="stylesheet"
+        id="bootstrap-css"
+    >
+    <script
+        src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"
+    ></script>
+    <script
+        src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"
+    ></script>
+    <link
+        rel="stylesheet"
+        type="text/css"
+        href="about.css"
+    />
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+
+    {% endblock %}
+</head>
+<body>
+{% block body %}
+{% with messages = get_flashed_messages() %}
+         {% if messages %}
+               {% for message in messages %}
+                    <h4 id="box"  style=" border-radius:2px;background:rgba(255, 0, 0, 0.8); position: absolute; color:white;">{{ message }}</h4>
+                    <script>
+                    setTimeout(() => {
+                              const box = document.getElementById('box');
+                              box.style.display = 'none';
+                    }, 3000);
+                    </script>
+               {% endfor %}
+         {% endif %}
+      {% endwith %}
+    <div  class="container emp-profile">
+        <form method="post">
+            <div class="row">
+                <div class="col-md-4">
+                    <img class="card-img-top" src={{owner.img_url}} style="height: 45vh">
+                </div>
+                <div class="col-md-6">
+                    <div class="profile-head">
+                        <h5>
+                            {{owner.name}}
+                        </h5>
+                        <h6>
+                            {{owner.categories}}
+                        </h6>
+                        <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                                    {% if owner.email == session["user_email"] %}
+                            <a style="font-size:12px; margin-top:10px; " href="edit_owner/{{owner.email}}"><i class="fa fa-pencil fa-fw"></i></a></a>
+                           {% endif %}
+                            <li class="nav-item">
+                                <a onclick="myFunction()" class="nav-link active" id="home-tab" data-toggle="tab" role="tab" aria-controls="home" aria-selected="true">About</a>
+                            </li>
+                            {% if session["user_email"] == owner.email and owner.owner != None or session["user_email"] != owner.email    %}
+                                                        <li class="nav-item">
+                                <a onclick="myFunction1()" class="nav-link active" id="home-tab1" data-toggle="tab" role="tab" aria-controls="home" aria-selected="false">Gallery</a>
+                            </li>
+                            {% endif %}
+                        </ul>
+
+                    </div>
+                                </form>
+             <div style="display:none;" id="gallery_owner" class="portfolio-item row">
+            <div class="item selfie col-lg-3 col-md-4 col-6 col-sm">
+                    {% if session["user_email"] == owner.email and owner.owner != None %}
+                  <div class="form-row">
+                <span class="glyphicon glyphicon-plus" aria-hidden="true">
+                  <a
+                          class="btn btn-success btn-md"
+                          role="button"
+                          data-toggle="modal"
+                          data-target="#form2"
+                  >
+                    <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="16"
+                            height="16"
+                            fill="currentColor"
+                            class="bi bi-plus"
+                            viewBox="0 0 16 16"
+                    >
+                      <path
+                              fill-rule="evenodd"
+                              d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"
+                      />
+                    </svg>
+                  </a>
+                </span>
+                    </div>
+        <div
+        class="modal fade"
+        id="form2"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="exampleModalLabel1"
+        aria-hidden="true"
+>
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header border-bottom-0">
+                <h5 class="modal-title" id="exampleModalLabel2">Add picture</h5>
+                <button
+                        type="button"
+                        class="close"
+                        data-dismiss="modal"
+                        aria-label="Close"
+                >
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form method="GET" action="/add_picture">
+                <div class="form-group col-md-12">
+                    <div class="form-row">
+                        <div class="form-group col-md-12">
+                            <div class="custom-file-upload">
+                              <textarea style="display:none;"
+                            id="owner1"
+                            name="owner"
+                            cols="40"
+                            rows="5"
+                            class="form-control"
+                    >{{owner.email}}</textarea>
+                        <label for="file-upload" class="custom-file-upload1">
+                            <i class="fa fa-cloud-upload"></i>Upload Picture
+                        </label>
+                        <input style="display:none;" name="file" id="file-upload" type="file"/>
+                        </div>
+                            <input
+                                    type="text"
+                                    name="img_url"
+                                    placeholder="Image Url"
+                                    class="form-control"
+                                    type="text"
+                            />
+                        </div>
+                                        <textarea
+                            id="desc"
+                            name="desc"
+                            placeholder="Description"
+                            cols="40"
+                            rows="5"
+                            class="form-control"
+                    ></textarea>
+                    </div>
+                    <br/>
+                    <div class="text-center">
+                        <input onclick="return confirm('Are you sure to add picture?')"  href="/add_picture" type="submit" class="btn btn-success" value="Add" />
+                        <input
+                                type="submit"
+                                class="btn btn-danger"
+                                data-dismiss="modal"
+                                value="Close"
+                        />
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endif %}
+                <table>
+                     <tr class="gallery">
+                {% for pic in pictures %}
+     <th >
+  <a name="picture" target="_blank" href="{{pic.img}}">
+    <img src="{{pic.img}}"  width="250" height="250">
+  </a>
+  <div class="desc">{{pic.description}}</div>
+          <div id="delete_pic"  style="font-size: 20px;" class="text-right">
+                        {% if session["user_email"] == owner.email %}
+                           <a  onclick="alert('profile picture changed successfully!')"  href="/update?img_url={{pic.img}}"><img class="profile_icon" src="https://freesvg.org/img/abstract-user-flat-4.png"></a>
+                            <a   onclick="return confirm('Are you sure to delete item?')"   href="/delete?id_pic={{ pic.id }}"><i class="fa fa-trash-o trash  "></i></a>
+
+                        {% endif %}
+                    </div>
+    </th>
+                                                                               {% endfor %}
+                    </tr>
+                    </table>
+            </div>
+
+                 </div>
+
+                        <div id="about_owner" class="col-md-8">
+                            <div class="tab-content profile-tab" id="myTabContent">
+                                <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label>Email</label>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <p>{{owner.email}}</p>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label>Phone</label>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <p>{{owner.phone}}</p>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label>City</label>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <p>{{owner.city}}</p>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label>ZIP Code</label>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <p>{{owner.zip_code}}</p>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-10">
+                                            <label>{{owner.info}}</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="profile-work">
+                    </div>
+                </div>
+
+            </div>
+
+    </div>
+                    <script>
+                    function myFunction1(){
+                         document.getElementById('about_owner').style.display= "none";
+                         document.getElementById('gallery_owner').style.display= "block";
+                        }
+                    function myFunction(){
+                         document.getElementById('about_owner').style.display= "block";
+                         document.getElementById('gallery_owner').style.display= "none";
+                        }
+                    </script>
+    <div class="container">
+                                {% if session["user_email"] == owner.email and owner.owner != None %}
+                  <div class="form-row">
+                <span class="glyphicon glyphicon-plus" aria-hidden="true">
+                  <a
+                          class="btn btn-success btn-md"
+                          role="button"
+                          data-toggle="modal"
+                          data-target="#form1"
+                  >
+                    <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="16"
+                            height="16"
+                            fill="currentColor"
+                            class="bi bi-plus"
+                            viewBox="0 0 16 16"
+                    >
+                      <path
+                              fill-rule="evenodd"
+                              d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"
+                      />
+                    </svg>
+                  </a>
+                </span>
+                    </div>
+        <div
+        class="modal fade"
+        id="form1"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="exampleModalLabel1"
+        aria-hidden="true"
+>
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header border-bottom-0">
+                <h5 class="modal-title" id="exampleModalLabel1">Add Item</h5>
+                <button
+                        type="button"
+                        class="close"
+                        data-dismiss="modal"
+                        aria-label="Close"
+                >
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form method="GET" action="/add_new_item">
+                <div class="form-group col-md-12">
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <input
+                                    type="text"
+                                    name="itemName"
+                                    placeholder="Item Name"
+                                    class="form-control"
+                                    type="text"
+                            />
+                        </div>
+                        <div class="form-group col-md-6" name="email">
+                            <input
+                                    type="text"
+                                    name="Price"
+                                    class="form-control"
+                                    id="inputEmail4"
+                                    placeholder="Item Price"
+                            />
+                        </div>
+                        <div class="form-group col-md-12">
+                            <input
+                                    type="text"
+                                    name="itemUrl"
+                                    placeholder="Image Url"
+                                    class="form-control"
+                                    type="text"
+                            />
+                        </div>
+                    </div>
+                    <textarea
+                            id="comment"
+                            name="comment"
+                            placeholder="Description"
+                            cols="40"
+                            rows="5"
+                            class="form-control"
+                    ></textarea>
+
+                    <br/>
+                    <div class="text-center">
+                        <input onclick="return confirm('Are you sure to add item?')"  href="/add_new_item" type="submit" class="btn btn-success" value="Add" />
+                        <input
+                                type="submit"
+                                class="btn btn-danger"
+                                data-dismiss="modal"
+                                value="Close"
+                        />
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endif %}
+        <div class="row" id="businesses_row">
+            {% for item in owner_items %}
+            <div  class="col-md-4" style="margin-bottom: 2%;">
+                                <div class="card">
+                <img class="card-img-top" src={{item.img_url}} style="height: 40vh;">
+                <div class="card-block">
+                    <h4 class="card-title text-center">{{item.name}}</h4>
+                    <div class="meta" style="margin-left: 5%;">
+                    <a>{{owner.categories}}</a>
+                              {% if item.sale !=None and item.sale!=0 %}
+                <div id="{{item.id}}" class="sale" style="text-align:left ">
+                     <span  ><h6 style="color:white;" class="card-title text-center"><i onmouseover="hide()" id="id-{{item.id}}"  style="margin-right:5px;"  class="fa fa-exclamation-circle "></i>{{item.sale}}% off</h6></span>
+
+                         </div>
+                                            {% endif %}
+                        {% if item.sale_description != "none"    %}
+                              <div class="alert">
+                                  <strong>Attention!</strong> {{item.sale_description}}
+                              </div>
+{% else %}
+                        <script>
+                            document.getElementById({{item.id}}).style.backgroundColor  = "green";
+                            function hide(){
+                            document.getElementById(id-{{item.id}}).style.display = "none";
+                            }
+                        </script>
+    {% endif %}
+                    <div id="demo" style="font-size: 20px;" class="text-right">
+                        {% if session["user_email"] == owner.email %}
+                            <a  href="edit/{{item.name}}"><i class="fa fa-pencil fa-fw"></i></a>
+                            <a onclick="return confirm('Are you sure to delete item?'); "   href="/delete?id={{ item.id }}"><i class="fa fa-trash-o trash"></i></a>
+
+                        {% endif %}
+                    </div>
+
+                    </div>
+
+                </div>
+
+                <div class="card-footer">
+                    <span><i class=""></i>{{item.info}}</span>
+                    <span><i class=""></i>|</span>
+                    <span><i class=""></i>{{item.price}}₪</span>
+                </div>
+
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+                    {% if owner.owner != None %}
+        <div id="reviews">
+            <h1>Customer reviews</h1>
+              {% if user != None %}
+            <div id="com" style="padding-left: 5px;" class="form-row">
+                <span class="glyphicon glyphicon-plus" aria-hidden="true">
+                  <a
+                          class="btn btn-success btn-md"
+                          role="button"
+                          data-toggle="modal"
+                          data-target="#form"
+                  >Comment
+    {% endif %}
+                  </a>
+                </span>
+                    </div>
+            <br>
+
+                          {% for com in comments %}
+               <div class="form-control">
+                            <p style="font-size:12px;">@{{com.name}}</p>
+                            <p>{{com.comment}}</p>
+
+                                {% if  session['user_email'] == com.email  %}
+                                       <div style="font-size: 20px;" class="text-right">
+                            <a  onclick="return confirm('Are you sure to delete comment?')"   href="/delete?com_id={{ com.id }}"><i class="fa fa-trash-o trash"></i></a>
+                         {% endif %}
+                      </div>
+                   </div>
+                          {% endfor %}
+                    <hr/>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div
+        class="modal fade"
+        id="form"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="exampleModalLabel"
+        aria-hidden="true"
+>
+    <div id="add_comment" class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header border-bottom-0">
+                <h5 class="modal-title" id="exampleModalLabel">Add Comment</h5>
+                <button
+                        type="button"
+                        class="close"
+                        data-dismiss="modal"
+                        aria-label="Close"
+                >
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form  method="GET" action="/add_comment">
+                <div class="form-group col-md-12">
+                     <textarea style="display:none;"
+                            id="owner"
+                            name="owner"
+                            cols="40"
+                            rows="5"
+                            class="form-control"
+                    >{{owner.email}}</textarea>
+                    <textarea
+                            style="resize: none;"
+                            id="comment"
+                            name="comment"
+                            placeholder="Description"
+                            cols="40"
+                            rows="5"
+                            class="form-control"
+                    ></textarea>
+                    <br/>
+                    <div class="text-center">
+                        <input  onclick="hide(); alert('Record added successfully')" type="submit" class="btn btn-success" value="Add"  />
+                        <input
+                                type="submit"
+                                class="btn btn-danger"
+                                data-dismiss="modal"
+                                value="Close"
+                        />
+
+                    </div>
+                </div>
+            </form>
+            <script>
+                function hide(){
+                    document.getElementById("add_comment").style.display = "none";
+                }
+            </script>
+                                                        {% endif %}
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+</body>
+</html>
