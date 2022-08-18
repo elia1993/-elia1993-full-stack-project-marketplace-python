@@ -6,5 +6,8 @@ the owner can add item / edit item / delete item / add pictures to the gallery /
 
 The Main page
 ![image](https://user-images.githubusercontent.com/77536857/185373499-08937c11-a942-4050-b47f-1144d4598c0f.png)
-
+Register as a business
+![image](https://user-images.githubusercontent.com/77536857/185373826-97733885-ef2b-4865-9fde-d1c496c11c36.png)
+Register as a client
+![image](https://user-images.githubusercontent.com/77536857/185373934-9a7f7b18-a8ac-4dc3-8705-c7118d1e8023.png)
 
