@@ -49,5 +49,8 @@ Can't edit an empty form
 ![image](https://user-images.githubusercontent.com/77536857/185378272-a56e7bf8-3267-4fe6-89ba-8af304d159d5.png)
 On hovering on like icon can see who did like for the specific restaurant
 ![image](https://user-images.githubusercontent.com/77536857/185378476-c3e54261-45b0-4a24-b7d9-1a275118a718.png)
+Data analytics for business - the chart shows how much likes the business got an like per month.
+![image](https://user-images.githubusercontent.com/77536857/190483822-793aba2e-9f90-43ba-9107-e61bda3bf415.png)
+![image](https://user-images.githubusercontent.com/77536857/190484074-f0352f25-13be-462d-9fbb-ef23d032f1c2.png)
 
 
