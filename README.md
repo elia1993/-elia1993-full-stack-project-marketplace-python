@@ -2,7 +2,7 @@
 In this website you can search for restaurant and fast food place, you can search by name of the restaurant or by location, you can also sort by high rate / low rate.
 you should register to the website as user or owner(restaurant) and login, the user can add like to the restaurant and add comment / delete comment.
 the user can compare 2 restaurant.
-the owner can add item / edit item / delete item / add pictures to the gallery/ delete picture/ change profile picture and the user can see who did "like" to the restaurant.
+the owner can add item / edit item / delete item / add pictures to the gallery/ delete picture/ change profile picture and the user can see who did "like" to the restaurant and there are a statistic tab that shows for the user how many likes he got per month. there are bar chart and pie chart.
 There are a items that have a sale when hovering on the sale, will open a description for the sale
 if the sale box in color green that mean the sale for every one, if the box in color black it's mean there are a description(condition) for this sale.
 
