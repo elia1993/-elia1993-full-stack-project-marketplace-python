@@ -102,7 +102,7 @@ def get_owners(cat=None):
 
 def get_cutomers_likes(email):
     with connection.cursor() as cursor:
-        query = f"SELECT users.name,l.business_email,l.customer_email  FROM likes l join users on users.email = l.customer_email WHERE l.business_email = '{email}'"
+        query = f"SELECT users.name,l.business_email,l.customer_email,date  FROM likes l join users on users.email = l.customer_email WHERE l.business_email = '{email}'"
         cursor.execute(query)
         result = cursor.fetchall()
         return result
@@ -241,7 +241,7 @@ def get_likes(email):
 
 
 
-def add_like(customer_email, business_email):
+def add_like(customer_email, business_email,date):
     with connection.cursor() as cursor:
         query = f"SELECT COUNT(customer_email) FROM likes WHERE business_email = '{business_email}' AND customer_email = '{customer_email}'"
         cursor.execute(query)
@@ -250,7 +250,7 @@ def add_like(customer_email, business_email):
             return ""
 
         if res[0]["COUNT(customer_email)"] == 0:
-            query = f"INSERT INTO likes (customer_email, business_email) VALUES ('{customer_email}', '{business_email}')"
+            query = f"INSERT INTO likes (customer_email, business_email,date) VALUES ('{customer_email}', '{business_email}','{date}')"
             cursor.execute(query)
             connection.commit()
         else:
@@ -297,4 +297,11 @@ def get_comments_by_owner(id):
         cursor.execute(query)
         result = cursor.fetchall()
         return result[0]["business_email"]
+
+def get_like_date(email):
+    with connection.cursor() as cursor:
+        query = f"SELECT MONTH(date) AS month , count(MONTH(date)) as count FROM `likes` where business_email = '{email}' GROUP BY  MONTH(date)"
+        cursor.execute(query)
+        result = cursor.fetchall()
+        return result
 

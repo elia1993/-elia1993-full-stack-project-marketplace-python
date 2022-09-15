@@ -37,13 +37,14 @@
         type="text/css"
         href="customer_search.css"
     />
+
     {% endblock %}
 </head>
 
 <body style="background-color: #d9cac1;">
 {% block body %}
 <section class="pt-5 pb-5 mt-0 align-items-center d-flex bg-dark"
-         style="height:38vh;background-size: cover;background-repeat: no-repeat; background-image: url(https://www.webfx.com/wp-content/uploads/2021/11/food-beverage-header.png);">
+         style="height: 250px;background-size: cover;background-repeat: no-repeat; background-image: url(https://www.webfx.com/wp-content/uploads/2021/11/food-beverage-header.png);">
     <div class="container-fluid">
         <div class="row justify-content-center align-items-center d-flex text-center h-100">
            <div  style=" text-align:center;" class="container">
@@ -104,8 +105,8 @@
     <div class="row" id="businesses_row">
         {% for owner in owners %}
         <div class="col-md-4" style="margin-bottom: 2%;">
-            <div class="card">
-                <img class="card-img-top" src={{owner.img_url}} style="height: 50vh;">
+            <div   class="card">
+                <img class="card-img-top" src={{owner.img_url}} style="height: 250px;">
                 <div class="card-block">
                     <h4 class="card-title text-center">{{owner.name}} </h4>
                     <div class="meta">

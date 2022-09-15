@@ -4,8 +4,11 @@ from objects.owner import Owner
 from objects.user import User
 from objects.item import Item
 from database.methods import *
-from loginrsa import *
 import os
+import datetime
+import xlsxwriter
+import pandas as pd
+import matplotlib.pyplot as plt
 
 app = Flask(__name__, static_url_path='', static_folder='static', template_folder='templates')
 app.secret_key = "BL0ckN0nAdmIN"
@@ -129,6 +132,39 @@ def logout():
 @app.route('/about')
 def about():
     email = request.args.get('em')
+    date_month =  get_like_date(email)
+    rows = []
+    for i in date_month:
+        month = i.get('month')
+        count = i.get('count')
+        rows.append([month,count])
+    with xlsxwriter.Workbook('test.xlsx') as workbook:
+        worksheet = workbook.add_worksheet()
+        worksheet.write('A1', 'month')
+        worksheet.write('B1', 'count')
+        for row_num, data in enumerate(rows):
+            worksheet.write_row(row_num+1, 0, data)
+    var = pd.read_excel("test.xlsx")
+    x = list(var['month'])
+    y = list(var['count'])
+    data = {'month': x,
+            'count': y
+            }
+    df = pd.DataFrame(data, columns=['month', 'count'])
+    df.plot(x='month', y='count', kind='bar', title='Likes By month')
+    plt.xticks(rotation=65)
+    plt.savefig('static/chart.png')
+    fig1, ax1 = plt.subplots()
+    ax1.pie(y, labels=x,autopct='%1.1f%%',
+            shadow=True, startangle=90)
+    ax1.axis('equal')
+    plt.legend()
+    plt.title("Likes By months percentage")
+    plt.savefig('static/chart_pie.png')
+    total_like = 0
+    for i in y:
+        total_like += i
+    print(total_like)
     comments = None
     owner_items = None
     pictures = None
@@ -143,7 +179,7 @@ def about():
     except:
         pass
     owner = get_owner(email)
-    return render_template('about_owner.html', owner_items=owner_items, owner=owner, var=template, user=user, comments=comments, pictures=pictures)
+    return render_template('about_owner.html', owner_items=owner_items, owner=owner, var=template, user=user, comments=comments, pictures=pictures, total_like=total_like)
 
 
 @app.route('/compare')
@@ -191,7 +227,8 @@ def sort_likes():
 @app.route('/like')
 def like_handling():
     owner = request.args.get('owner')
-    add_like(session["user_email"], owner)
+    date = datetime.date.today()
+    add_like(session["user_email"], owner,date)
     return root()
 
 
@@ -351,6 +388,8 @@ def add_new_item():
     owner = get_owner(session['user_email'])
     return redirect(url_for('about', em=session["user_email"]))
 
+
+
 if __name__ == '__main__':
-    app.run(port=5000)
+    app.run()
 

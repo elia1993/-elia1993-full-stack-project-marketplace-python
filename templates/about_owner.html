@@ -42,7 +42,7 @@
         <form method="post">
             <div class="row">
                 <div class="col-md-4">
-                    <img class="card-img-top" src={{owner.img_url}} style="height: 45vh">
+                    <img class="card-img-top" src={{owner.img_url}} style="height: 250px;">
                 </div>
                 <div class="col-md-6">
                     <div class="profile-head">
@@ -63,7 +63,13 @@
                                                         <li class="nav-item">
                                 <a onclick="myFunction1()" class="nav-link active" id="home-tab1" data-toggle="tab" role="tab" aria-controls="home" aria-selected="false">Gallery</a>
                             </li>
-                            {% endif %}
+                                                        {% endif %}
+                            {% if session["user_email"] == owner.email  %}
+                                               <li class="nav-item">
+                                <a onclick="myFunction2()" class="nav-link active" id="home-tab2" data-toggle="tab" role="tab" aria-controls="home" aria-selected="false">Statistic</a>
+                            </li>
+                                                                                    {% endif %}
+
                         </ul>
 
                     </div>
@@ -188,7 +194,34 @@
             </div>
 
                  </div>
+             <div style="display:none;" id="statistic_owner" class="col-md-9">
+            <div class="item selfie col-lg-7 col-md-8 col-9 col-sm">
+                <div class="btn-group">
+            <a onclick="show_bar()" style="color:white;" class="btn btn-success" role="button" id="bar" >Bar chart</a>
+            <a onclick="show_pie()" style="color:white;" class="btn btn-success" role="button" id="pie" >Pie chart</a>
+</div>
+                <h5 style="font-size:15px;margin-top:10px; "> Total likes: {{total_like}}</h5>
+                <div id="bar_chart" style="display:none;">
+                                              <img  class="card-img-top" src= "{{ url_for('static',filename='chart.png') }}" style="height: 50vh; width:50vh;"/>
 
+                    </div>
+                <div id="pie_chart" style="display:none;">
+                                              <img  class="card-img-top" src= "{{ url_for('static',filename='chart_pie.png') }}" style="height: 50vh; width:50vh;"/>
+
+                    </div>
+<script>
+    function show_bar(){
+             document.getElementById('bar_chart').style.display= "block";
+             document.getElementById('pie_chart').style.display= "none";
+    }
+    function show_pie(){
+             document.getElementById('pie_chart').style.display= "block";
+             document.getElementById('bar_chart').style.display= "none";
+    }
+
+</script>
+                 </div>
+                 </div>
                         <div id="about_owner" class="col-md-8">
                             <div class="tab-content profile-tab" id="myTabContent">
                                 <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
@@ -244,14 +277,28 @@
             </div>
 
     </div>
+
                     <script>
                     function myFunction1(){
                          document.getElementById('about_owner').style.display= "none";
                          document.getElementById('gallery_owner').style.display= "block";
+                         document.getElementById('statistic_owner').style.display= "none";
+                         document.getElementById('bar_chart').style.display= "none";
+                         document.getElementById('pie_chart').style.display= "none";
+
                         }
                     function myFunction(){
                          document.getElementById('about_owner').style.display= "block";
                          document.getElementById('gallery_owner').style.display= "none";
+                         document.getElementById('statistic_owner').style.display= "none";
+                         document.getElementById('bar_chart').style.display= "none";
+                         document.getElementById('pie_chart').style.display= "none";
+                        }
+                    function myFunction2(){
+                         document.getElementById('statistic_owner').style.display= "block";
+                         document.getElementById('gallery_owner').style.display= "none";
+                         document.getElementById('about_owner').style.display= "none";
+
                         }
                     </script>
     <div class="container">
@@ -361,7 +408,7 @@
             {% for item in owner_items %}
             <div  class="col-md-4" style="margin-bottom: 2%;">
                                 <div class="card">
-                <img class="card-img-top" src={{item.img_url}} style="height: 40vh;">
+                <img class="card-img-top" src={{item.img_url}} style="height: 250px;">
                 <div class="card-block">
                     <h4 class="card-title text-center">{{item.name}}</h4>
                     <div class="meta" style="margin-left: 5%;">

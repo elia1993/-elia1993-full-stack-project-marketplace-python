@@ -33,7 +33,7 @@ create table items(
     foreign key (owner) references owners(email)
 );
 
-create table Likes(
+create table likes(
     id int primary key auto_increment,
     customer_email varchar(255),
     business_email varchar(255),
@@ -43,7 +43,7 @@ create table Likes(
 
 create table gallery(
     id int primary key auto_increment,
-    owner_email  text,
+    owner_email  varchar(255),
     img varchar(255),
     description varchar(255),
     foreign key (owner_email) references owners(email)
