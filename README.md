@@ -2,7 +2,7 @@
 In this website you can search for restaurant and fast food place, you can search by name of the restaurant or by location, you can also sort by high rate / low rate.
 you should register to the website as user or owner(restaurant) and login, the user can add like to the restaurant and add comment / delete comment.
 the user can compare 2 restaurant.
-the owner can add item / edit item / delete item / add pictures to the gallery/ delete picture/ change profile picture and the user can see who did "like" to the restaurant.
+the owner can add item / edit item / delete item / add pictures to the gallery/ delete picture/ change profile picture and the user can see who did "like" to the restaurant and there are a statistic tab that shows for the user how many likes he got per month. there are bar chart and pie chart.
 There are a items that have a sale when hovering on the sale, will open a description for the sale
 if the sale box in color green that mean the sale for every one, if the box in color black it's mean there are a description(condition) for this sale.
 
@@ -49,5 +49,8 @@ Can't edit an empty form
 ![image](https://user-images.githubusercontent.com/77536857/185378272-a56e7bf8-3267-4fe6-89ba-8af304d159d5.png)
 On hovering on like icon can see who did like for the specific restaurant
 ![image](https://user-images.githubusercontent.com/77536857/185378476-c3e54261-45b0-4a24-b7d9-1a275118a718.png)
+Data analytics for business - the chart shows how much likes the business got an like per month.
+![image](https://user-images.githubusercontent.com/77536857/190483822-793aba2e-9f90-43ba-9107-e61bda3bf415.png)
+![image](https://user-images.githubusercontent.com/77536857/190484074-f0352f25-13be-462d-9fbb-ef23d032f1c2.png)
 
 
