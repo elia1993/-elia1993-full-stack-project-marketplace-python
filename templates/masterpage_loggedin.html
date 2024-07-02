@@ -46,12 +46,14 @@
       </li>
 
     </ul>
-        {% if session["user_email"] == user.email and session["user_email"] != None %}
+        {% if session["user_email"] == user.email %}
             <h2 style="color:white; font-size:15px;"> Hi {{user.name}}!</h2>
       {% endif %}
   </div>
 </nav>
+
 	{% block body %}
+
 	{% endblock %}
 
 </body>
